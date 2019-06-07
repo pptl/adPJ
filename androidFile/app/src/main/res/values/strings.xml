@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">shuafeia</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_friend_list">FriendList</string>
+    <string name="title_setting">Setting</string>
+    <string name="title_activity_profile">profile</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>
