@@ -9,7 +9,10 @@
     <string name="title_activity_profile">profile</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="month_overview">FEB Overview</string>
-    <string name="title_addtask">addTask</string>
+    <string name="title_addtask">Add Task</string>
+    <string name="title_addtask_post">Post</string>
+    <string name="addTask_editTextTask_hint">Enter your task</string>
+    <string name="addTask_editTextLimited_hint">Enter your challenge limited</string>
     <string name="title_calender">calender</string>
 
 </resources>
