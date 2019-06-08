@@ -27,6 +27,15 @@
                 android:text="@string/title_addtask"
                 android:textSize="17dp" />
 
+            <TextView
+                android:id="@+id/toolbar_post"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginEnd="23dp"
+                android:layout_marginRight="23dp"
+                android:text="@string/title_addtask_post" />
+
 
         </android.support.v7.widget.Toolbar>
 
@@ -47,7 +56,125 @@
             android:layout_marginRight="348dp"
             android:layout_marginBottom="8dp"
             android:onClick="closeTab"
-            app:srcCompat="@drawable/back_ic" />
+            app:srcCompat="@drawable/cancel" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#FEF4EA">
+
+
+        <TextView
+            android:id="@+id/addTask_content_task"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="23dp"
+            android:text="Task" />
+
+        <EditText
+            android:id="@+id/editText_task"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="23dp"
+            android:ems="13"
+            android:hint="@string/addTask_editTextTask_hint"
+            android:inputType="textLongMessage" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+
+        <TextView
+            android:id="@+id/addTask_content_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="23dp"
+            android:text="Time" />
+
+        <Button
+            android:id="@+id/showdailog"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="240dp"
+            android:text="DATE"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="180dp"
+            android:textSize="15sp"/>
+
+        <Button
+            android:id="@+id/time"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="100dp"
+            android:text="TIME"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/day_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="320dp"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#FEF4EA">
+
+
+        <TextView
+            android:id="@+id/addTask_content_remind"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="23dp"
+            android:text="Remind" />
+
+        <Switch
+            android:id="@+id/addTask_content_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="255dp"/>
 
     </RelativeLayout>
 
@@ -57,6 +184,65 @@
         android:layout_weight="1">
 
 
+        <TextView
+            android:id="@+id/addTask_content_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="23dp"
+            android:text="Type" />
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="115dp"
+            android:layout_marginRight="130dp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#FEF4EA"
+        android:id="@+id/limited">
+
+
+        <TextView
+            android:id="@+id/addTask_content_limited"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="23dp"
+            android:text="Limited" />
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="23dp"
+            android:ems="13"
+            android:hint="@string/addTask_editTextLimited_hint"
+            android:inputType="phone|number"
+            android:digits="1234567890" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5">
     </RelativeLayout>
 
 </LinearLayout>
