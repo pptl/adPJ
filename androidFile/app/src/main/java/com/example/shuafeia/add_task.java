@@ -63,11 +63,11 @@ public class add_task extends AppCompatActivity implements View.OnClickListener 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if(position == 0){
-                    findViewById(R.id.limited).setVisibility( View.INVISIBLE );
-                    setTitle( "INVISIBLE" );
-                } else {
                     findViewById(R.id.limited).setVisibility( View.VISIBLE );
                     setTitle( "VISIBLE" );
+                } else {
+                    findViewById(R.id.limited).setVisibility( View.INVISIBLE );
+                    setTitle( "INVISIBLE" );
                 }
             }
 
