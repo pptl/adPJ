@@ -76,3 +76,4 @@ public class calender extends Fragment {
 
         return inflater.inflate(R.layout.fragment_calender, null);
     }
+}
