@@ -34,7 +34,8 @@
                 android:layout_gravity="right"
                 android:layout_marginEnd="23dp"
                 android:layout_marginRight="23dp"
-                android:text="@string/title_addtask_post" />
+                android:text="@string/title_addtask_post"
+                android:onClick="PostEvent"/>
 
 
         </android.support.v7.widget.Toolbar>
@@ -112,7 +113,7 @@
             android:textSize="18sp" />
 
         <Button
-            android:id="@+id/showdialog"
+            android:id="@+id/Date_Button"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -124,7 +125,7 @@
             android:textSize="14sp" />
 
         <Button
-            android:id="@+id/time"
+            android:id="@+id/Time_Button"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -166,6 +167,8 @@
 
     </RelativeLayout>
 
+
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -185,7 +188,7 @@
             android:textSize="18sp" />
 
         <Spinner
-            android:id="@+id/spinner"
+            android:id="@+id/type_spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -217,7 +220,7 @@
             android:textSize="18sp" />
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/editText_Limit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -228,6 +231,37 @@
             android:hint="@string/addTask_editTextLimited_hint"
             android:inputType="phone|number"
             android:digits="1234567890" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+
+        <TextView
+            android:id="@+id/addTask_content_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="23dp"
+            android:text="Location"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/addTask_button_location"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="170dp"
+            android:text="定位"
+            android:textColor="@android:color/black" />
+
     </RelativeLayout>
 
 
