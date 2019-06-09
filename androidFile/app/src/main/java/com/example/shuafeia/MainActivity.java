@@ -1,4 +1,5 @@
 package com.example.shuafeia;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,18 +11,14 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
-import android.arch.lifecycle.ViewModelProviders;
-
 import com.example.Room1.Event;
 import com.example.Room1.EventViewModel;
-
 
 //implement the interface OnNavigationItemSelectedListener in your activity class
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
     private EventViewModel mEventViewModel;
-
     static final int RESULE_CODE = 1;
 
     @Override
@@ -31,7 +28,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         //loading the default fragment
         loadFragment(new calender());
-
         mEventViewModel = ViewModelProviders.of(this).get(EventViewModel.class);
 
         //getting bottom navigation view and attaching the listener
@@ -87,7 +83,12 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == RESULE_CODE) {
             if (resultCode == RESULT_OK) {
-                Event event = new Event(data.getStringExtra("Title"), data.getStringExtra("Descr"), data.getStringExtra("Date"), data.getStringExtra("Time"), data.getBooleanExtra("Remind", false));
+                Event event = new Event(data.getStringExtra("Task"),
+                                        data.getStringExtra("Date"),
+                                        data.getStringExtra("Time"),
+                                        data.getBooleanExtra("Remind", false),
+                                        data.getStringExtra("Type"),
+                                        data.getStringExtra("Limit"));
                 //db.eventDao().insert(event);
                 mEventViewModel.insert(event);
                 Log.d(LOG_TAG,"Insert sussceful");
