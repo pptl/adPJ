@@ -1,5 +1,4 @@
 package com.example.shuafeia;
-import android.arch.lifecycle.Observer;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -7,22 +6,15 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
 import android.arch.lifecycle.ViewModelProviders;
-import android.widget.CalendarView;
 
-import com.example.database.Event;
-import com.example.database.EventListAdapter;
-import com.example.database.EventRoomDatabase;
-import com.example.database.EventViewModel;
+import com.example.Room1.Event;
+import com.example.Room1.EventViewModel;
 
-import java.util.ArrayList;
-import java.util.List;
 
 //implement the interface OnNavigationItemSelectedListener in your activity class
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
