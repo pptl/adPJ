@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import com.example.shuafeia.R;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 
 public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.EventViewHolder> {
@@ -18,8 +20,9 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.Even
 
     public EventListAdapter(Context context){mInflater = LayoutInflater.from(context);}
 
+    @NotNull
     @Override
-    public EventViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public EventViewHolder onCreateViewHolder(@NotNull ViewGroup parent, int viewType) {
         View itemView = mInflater.inflate(R.layout.list_item,parent,false);
         return new EventViewHolder(itemView);
     }
@@ -34,7 +37,7 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.Even
         if(mEvent!=null){
             Event current = mEvent.get(position);
             holder.list_time.setText(current.getTime());
-            holder.list_title.setText(current.getTitle());
+            holder.list_title.setText(current.getTask());
         }
         else{
             holder.list_time.setText("0");

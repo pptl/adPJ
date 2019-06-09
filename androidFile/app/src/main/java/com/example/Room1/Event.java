@@ -5,76 +5,81 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
+import org.jetbrains.annotations.NotNull;
+
+import java.sql.Time;
+
 @Entity(tableName = "Event_table")
 public class Event {
 
     @PrimaryKey
     @NonNull
     @ColumnInfo(name = "DateTime")
-    private String mDateTime;
+    private String DateTime;
 
-    @ColumnInfo(name = "Title")
-    @NonNull
-    private String mTitle;
-
-    @ColumnInfo(name = "Descr")
-    @NonNull
-    private String mDescr;
+    @ColumnInfo(name = "Task")
+    private String Task;
 
     @ColumnInfo(name = "Date")
-    @NonNull
-    private String mDate;
+    private String Date;
 
     @ColumnInfo(name = "Time")
-    @NonNull
-    private String mTime;
+    private String Time;
 
     @ColumnInfo(name = "isRemind")
-    @NonNull
-    private boolean mRemind;
+    private boolean Remind;
 
-    @ColumnInfo(name = "last_update")
-    private int last_update;
+    @ColumnInfo(name = "Type")
+    private String Type;
 
+    @ColumnInfo(name = "Limit")
+    private String Limit;
 
-    public Event(@NonNull String title, @NonNull String descr, @NonNull String date, @NonNull String time, @NonNull boolean remind) {
-        this.mTitle = title;
-        this.mDescr = descr;
-        this.mDate = date;
-        this.mTime = time;
-        this.mRemind = remind;
-        this.mDateTime = mDate+" "+mTime;
+    /*public Event(Event event){
+        this.mTask = event.getmTask();
+        this.mDate = event.getmDate();
+        this.mTime = event.getmTime();
+        this.mRemind = event.getmRemind();
+        this.mType = event.getmType();
+        this.mLimit = event.getmLimit();
+        this.mDateTime = event.getmDateTime();
+    }*/
+
+    public Event(@NonNull String Task, @NonNull String Date, @NonNull String Time,@NonNull boolean Remind,@NonNull String Type,String Limit) {
+        this.Task = Task;
+        this.Date = Date;
+        this.Time = Time;
+        this.Remind = Remind;
+        this.Type = Type;
+        this.Limit = Limit;
+        this.DateTime = Date + " " + Time;
     }
+        @NonNull
+        public String getDateTime() {return DateTime;}
 
-    public String getTitle(){return this.mTitle;}
+        public void setDateTime(@NonNull String dateTime) { DateTime = dateTime;}
 
-    public void setTitle(String title){this.mTitle = title;}
+        public String getTask() {return Task; }
 
-    public String getDescr(){return this.mDescr;}
+        public void setTask(String task) { Task = task; }
 
-    public void setDescr(String Descr){this.mDescr = Descr;}
+        public String getDate() {return Date; }
 
-    public String getDate() {return mDate; }
+        public void setDate(String date) {Date = date; }
 
-    public void setDate(String date) {this.mDate = date;}
+        public String getTime() {return Time; }
 
-    public String getTime() {return mTime;}
+        public void setTime(String time) {Time = time; }
 
-    public void setTime(String time){this.mTime = time;}
+        public boolean isRemind() {return Remind; }
 
-    public boolean isRemind() {return mRemind;}
+        public void setRemind(boolean remind) { Remind = remind; }
 
-    public void setRemind(boolean remind){this.mRemind = remind;}
+        public String getType() {return Type;}
 
-    public String getDateTime() {return mDateTime;}
+        public void setType(String type) {Type = type; }
 
-    public void setDateTime(String datetime){this.mDateTime = datetime;}
+        public String getLimit() { return Limit; }
 
-    public int getLast_update() {
-        return last_update;
-    }
-
-    public void setLast_update(int last_update) {
-        this.last_update = last_update;
-    }
+        public void setLimit(String limit) {Limit = limit;}
 }
