@@ -14,9 +14,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CalendarView;
 
-import com.example.database.Event;
-import com.example.database.EventListAdapter;
-import com.example.database.EventViewModel;
+import com.example.Room1.Event;
+import com.example.Room1.EventListAdapter;
+import com.example.Room1.EventViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
