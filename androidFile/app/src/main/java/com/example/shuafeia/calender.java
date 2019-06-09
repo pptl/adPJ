@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CalendarView;
+import android.widget.TextView;
 
 import com.example.Room1.Event;
 import com.example.Room1.EventListAdapter;
@@ -30,6 +31,7 @@ public class calender extends Fragment {
     private RecyclerView recyclerView;
     private EventViewModel mEventViewModel;
     private CalendarView calendarView;
+    private int total_size = 0;
     private String Date;
 
     @Nullable
@@ -43,24 +45,31 @@ public class calender extends Fragment {
         Log.d(LOG_TAG,"Create:"+Date);
 
         final EventListAdapter adapter = new EventListAdapter(this.getContext());
-        recyclerView = RootView.findViewById(R.id.calendar_RecyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
+        recyclerView = (RecyclerView) RootView.findViewById(R.id.calendar_RecyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         mEventViewModel = ViewModelProviders.of(this).get(EventViewModel.class);
         mEventViewModel.getAllEvent().observe(this, new Observer<List<Event>>() {
             @Override
             public void onChanged(@Nullable final List<Event> events) {
                 // Update the cached copy of the words in the adapter.
-                for (int i = 0; i < events.size(); i++) {
+                List<Event> temp = new ArrayList<>();
+                int i;
+                for (i = 0; i < events.size(); i++) {
                     Log.d(LOG_TAG, "i:" + i);
-                    Log.d(LOG_TAG, events.get(i).getTask()
-                            + " " + events.get(i).getDate()
-                            + " " + events.get(i).getTime()
-                            + " " + events.get(i).isRemind()
-                            + " " + events.get(i).getType()
-                            + " " + events.get(i).getLimit());
+                    if(events.get(i).getDate().equals(Date)){
+                        temp.add(events.get(i));
+                        Log.d(LOG_TAG, events.get(i).getTask()
+                                + " " + events.get(i).getDate()
+                                + " " + events.get(i).getTime()
+                                + " " + events.get(i).isRemind()
+                                + " " + events.get(i).getType()
+                                + " " + events.get(i).getLimit());
+                    }
                 }
-                adapter.setEvent(events);
+                total_size = i;
+                Log.d(LOG_TAG,"Size:"+i);
+                adapter.setEvent(temp);
             }
         });
         recyclerView.setAdapter(adapter);
@@ -70,12 +79,13 @@ public class calender extends Fragment {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                 Date = year + "/" + (month + 1) + "/" + dayOfMonth;
+
+                Log.d(LOG_TAG, "User click Date:"+Date);
                 mEventViewModel.findEventByDate(Date).observe(calender.this, new Observer<List<Event>>() {
                     @Override
                     public void onChanged(@Nullable final List<Event> events) {
                         // Update the cached copy of the words in the adapter.
-                        List<Event> temp = new ArrayList<>();
-                        for (int i = 0; i < events.size(); i++) {
+                        /*for (int i = 0; i < events.size(); i++) {
                             Log.d(LOG_TAG, "i:" + i);
                             Log.d(LOG_TAG, events.get(i).getTask()
                                                     + " " + events.get(i).getDate()
@@ -83,15 +93,14 @@ public class calender extends Fragment {
                                                     + " " + events.get(i).isRemind()
                                                     + " " + events.get(i).getType()
                                                     + " " + events.get(i).getLimit());
-                        }
+                        }*/
                         adapter.setEvent(events);
                         recyclerView.setAdapter(adapter);
-                        Log.d(LOG_TAG, "User click Date:"+Date);
                     }
                 });
             }
         });
 
-        return inflater.inflate(R.layout.fragment_calender, null);
+        return RootView;
     }
 }
