@@ -2,7 +2,11 @@ package com.example.Room1;
 
 import android.app.Application;
 import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.Observer;
 import android.os.AsyncTask;
+import android.support.annotation.Nullable;
+
+import com.example.shuafeia.MainActivity;
 
 import java.util.List;
 
@@ -19,6 +23,8 @@ public class EventRepository {
     LiveData<List<Event>> getAllEvent(){
         return mAllEvent;
     }
+
+    
 
     public void insert(Event event){
         new insertAsyncTask(mEventDao).execute(event);
