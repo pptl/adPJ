@@ -19,6 +19,7 @@ import com.example.Room1.EventListAdapter;
 import com.example.Room1.EventViewModel;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class calender extends Fragment {
@@ -35,8 +36,12 @@ public class calender extends Fragment {
 
         View RootView = inflater.inflate(R.layout.fragment_calender, container, false);
 
+        Calendar calendar = Calendar.getInstance();
+        Date = calendar.get(Calendar.YEAR)+"/"+(calendar.get(Calendar.MONTH)+1)+"/"+calendar.get(Calendar.DAY_OF_MONTH);
+        Log.d(LOG_TAG,"Create:"+Date);
+
         final EventListAdapter adapter = new EventListAdapter(this.getContext());
-        recyclerView = RootView.findViewById(R.id.RecyclerView);
+        recyclerView = RootView.findViewById(R.id.calendar_RecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
 
         mEventViewModel = ViewModelProviders.of(this).get(EventViewModel.class);
@@ -44,6 +49,15 @@ public class calender extends Fragment {
             @Override
             public void onChanged(@Nullable final List<Event> events) {
                 // Update the cached copy of the words in the adapter.
+                for (int i = 0; i < events.size(); i++) {
+                    Log.d(LOG_TAG, "i:" + i);
+                    Log.d(LOG_TAG, events.get(i).getTask()
+                            + " " + events.get(i).getDate()
+                            + " " + events.get(i).getTime()
+                            + " " + events.get(i).isRemind()
+                            + " " + events.get(i).getType()
+                            + " " + events.get(i).getLimit());
+                }
                 adapter.setEvent(events);
             }
         });
@@ -64,11 +78,16 @@ public class calender extends Fragment {
                                 temp.add(events.get(i));
                             }
                             Log.d(LOG_TAG, "i:" + i);
-                            Log.d(LOG_TAG, events.get(i).getTitle() + " " + events.get(i).getDescr() + " " + events.get(i).getDate() + " " + events.get(i).getTime() + " " + events.get(i).isRemind());
+                            Log.d(LOG_TAG, events.get(i).getTask()
+                                                    + " " + events.get(i).getDate()
+                                                    + " " + events.get(i).getTime()
+                                                    + " " + events.get(i).isRemind()
+                                                    + " " + events.get(i).getType()
+                                                    + " " + events.get(i).getLimit());
                         }
-                        adapter.setEvent(events);
+                        adapter.setEvent(temp);
                         recyclerView.setAdapter(adapter);
-                        Log.d(LOG_TAG, Date);
+                        Log.d(LOG_TAG, "User click Date:"+Date);
                     }
                 });
             }
