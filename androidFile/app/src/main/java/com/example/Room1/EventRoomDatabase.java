@@ -1,4 +1,4 @@
-package com.example.database;
+package com.example.Room1;
 
 import android.arch.persistence.db.SupportSQLiteDatabase;
 import android.arch.persistence.room.Database;
@@ -36,32 +36,5 @@ public abstract class EventRoomDatabase extends RoomDatabase {
             }
         }
         return INSTANCE;
-    }
-
-    private static RoomDatabase.Callback sRoomDatabaseCallback =
-            new RoomDatabase.Callback(){
-                @Override
-                public void onOpen (@NonNull SupportSQLiteDatabase db){
-                    super.onOpen(db);
-                    new PopulateDbAsync(INSTANCE).execute();
-                }
-            };
-
-    private static class PopulateDbAsync extends AsyncTask<Void,Void,Void> {
-        private final EventDao mDao;
-
-        PopulateDbAsync(EventRoomDatabase db) {
-            mDao = db.eventDao();
-        }
-
-        @Override
-        protected Void doInBackground(final Void... params) {
-            // Start the app with a clean database every time.
-            // Not needed if you only populate the database
-            // when it is first created
-            mDao.deleteAll();
-            mDao.getAllEvents();
-            return null;
-        }
     }
 }
