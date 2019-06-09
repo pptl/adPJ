@@ -14,7 +14,6 @@ import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.Switch;
-import android.widget.TextView;
 import android.widget.TimePicker;
 
 import java.util.Calendar;
@@ -23,8 +22,6 @@ public class add_task extends AppCompatActivity implements View.OnClickListener 
 
     private Button showdialog;
     private Button time;
-    private TextView day;
-    private TextView day_time;
     private DatePickerDialog datePickerDialog;
     private TimePickerDialog timePickerDialog;
     private Calendar calendar;
@@ -35,10 +32,8 @@ public class add_task extends AppCompatActivity implements View.OnClickListener 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_task);
-        showdialog = findViewById(R.id.showdailog);
+        showdialog = findViewById(R.id.showdialog);
         time = findViewById(R.id.time);
-        day = findViewById(R.id.day);
-        day_time = findViewById(R.id.day_time);
         reminder = findViewById(R.id.addTask_content_switch);
         type = findViewById(R.id.spinner);
 
@@ -52,14 +47,18 @@ public class add_task extends AppCompatActivity implements View.OnClickListener 
             }
         });
 
+        
         ArrayAdapter<CharSequence> nAdapter = ArrayAdapter.createFromResource(
                 this, R.array.addTask_type_array, android.R.layout.simple_spinner_item );
         nAdapter.setDropDownViewResource(
                 android.R.layout.simple_spinner_dropdown_item);
+        
         if (type != null) {
             type.setAdapter(nAdapter);
         }
+        
         type.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if(position == 0){
@@ -81,7 +80,7 @@ public class add_task extends AppCompatActivity implements View.OnClickListener 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.showdailog:
+            case R.id.showdialog:
                 showDialog();
                 break;
             case R.id.time:
@@ -101,7 +100,7 @@ public class add_task extends AppCompatActivity implements View.OnClickListener 
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                 //String time = String.valueOf(year) + "/" + String.valueOf(monthOfYear + 1) + "/" + Integer.toString(dayOfMonth);
                 String time = String.valueOf(monthOfYear + 1) + "/" + Integer.toString(dayOfMonth);
-                day.setText(time);
+                showdialog.setText(time);
             }
         },
                 calendar.get(Calendar.YEAR),
@@ -120,7 +119,7 @@ public class add_task extends AppCompatActivity implements View.OnClickListener 
                 String hourAM = Integer.toString(hourOfDay);
                 String hourPM = Integer.toString(hourOfDay - 12);
                 String min = Integer.toString(minute);
-                day_time.setText((hourOfDay > 12 ? hourPM : hourAM) + ":" + (minute < 10 ? "0" + min : min) + " " + (hourOfDay > 12 ? "PM" : "AM"));
+                time.setText((hourOfDay > 12 ? hourPM : hourAM) + ":" + (minute < 10 ? "0" + min : min) + " " + (hourOfDay > 12 ? "PM" : "AM"));
             }
         }, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), false);
         timePickerDialog.show();
