@@ -66,6 +66,5 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     public void addTask(View view) {
         Intent intent = new Intent(this,add_task.class);
         startActivity(intent);
-
     }
 }
