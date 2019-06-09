@@ -18,6 +18,8 @@ import com.example.Room1.Event;
 import com.example.Room1.EventListAdapter;
 import com.example.Room1.EventViewModel;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -32,7 +34,7 @@ public class calender extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NotNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View RootView = inflater.inflate(R.layout.fragment_calender, container, false);
 
@@ -74,9 +76,6 @@ public class calender extends Fragment {
                         // Update the cached copy of the words in the adapter.
                         List<Event> temp = new ArrayList<>();
                         for (int i = 0; i < events.size(); i++) {
-                            if (events.get(i).getDate().equals(Date)) {
-                                temp.add(events.get(i));
-                            }
                             Log.d(LOG_TAG, "i:" + i);
                             Log.d(LOG_TAG, events.get(i).getTask()
                                                     + " " + events.get(i).getDate()
@@ -85,7 +84,7 @@ public class calender extends Fragment {
                                                     + " " + events.get(i).getType()
                                                     + " " + events.get(i).getLimit());
                         }
-                        adapter.setEvent(temp);
+                        adapter.setEvent(events);
                         recyclerView.setAdapter(adapter);
                         Log.d(LOG_TAG, "User click Date:"+Date);
                     }
