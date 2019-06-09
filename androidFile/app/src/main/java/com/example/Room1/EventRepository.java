@@ -24,8 +24,6 @@ public class EventRepository {
         return mAllEvent;
     }
 
-    
-
     public void insert(Event event){
         new insertAsyncTask(mEventDao).execute(event);
     }
