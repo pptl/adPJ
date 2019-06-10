@@ -23,7 +23,6 @@ public interface EventDao {
     //@Query("SELECT Title & Time FROM Event_table WHERE Date = date")                           //查詢資料
     //void findDetail(String date);
 
-
     @Query("SELECT * FROM Event_table WHERE Date = :date")             //查詢資料
     LiveData<List<Event>> findEventByDate(String date);
 
