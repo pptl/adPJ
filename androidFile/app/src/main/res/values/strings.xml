@@ -14,5 +14,15 @@
     <string name="addTask_editTextTask_hint">Enter your task</string>
     <string name="addTask_editTextLimited_hint">Enter your challenge limited</string>
     <string name="title_calender">calender</string>
+    <string name="friend_name">friend_name</string>
+    <string name="friend_s_profile">Friend\'s Profile</string>
+    <string name="overview">Overview</string>
 
+
+    <string-array name="frindNameList">
+        <item>Mr Meow</item>
+        <item>Miss Shellow</item>
+        <item>Mr Anyson</item>
+        <item>Mr Mutang</item>
+    </string-array>
 </resources>

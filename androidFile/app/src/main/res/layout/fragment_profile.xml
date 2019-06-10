@@ -57,7 +57,7 @@
             android:textSize="17dp" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/friend_icon_imageView"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignParentStart="true"
@@ -69,7 +69,7 @@
             android:src="@drawable/task_done" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/friend_icon_imageView2"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignParentBottom="true"
@@ -78,14 +78,14 @@
             android:layout_marginEnd="58dp"
             android:layout_marginRight="58dp"
             android:layout_marginBottom="110dp"
-            android:layout_toStartOf="@+id/imageView3"
-            android:layout_toLeftOf="@+id/imageView3"
-            android:layout_toEndOf="@+id/imageView"
-            android:layout_toRightOf="@+id/imageView"
+            android:layout_toStartOf="@+id/friend_icon_imageView3"
+            android:layout_toLeftOf="@+id/friend_icon_imageView3"
+            android:layout_toEndOf="@+id/friend_icon_imageView"
+            android:layout_toRightOf="@+id/friend_icon_imageView"
             android:src="@drawable/challenge_comp" />
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/friend_icon_imageView3"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignParentEnd="true"
@@ -97,7 +97,7 @@
             android:src="@drawable/reminded" />
 
         <TextView
-            android:id="@+id/reminded_count_textview"
+            android:id="@+id/friend_reminded_count_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -109,7 +109,7 @@
             android:text="TextView" />
 
         <TextView
-            android:id="@+id/challange_complete_count_textview"
+            android:id="@+id/friend_challange_complete_count_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -118,14 +118,14 @@
             android:layout_marginEnd="69dp"
             android:layout_marginRight="69dp"
             android:layout_marginBottom="25dp"
-            android:layout_toStartOf="@+id/reminded_count_textview"
-            android:layout_toLeftOf="@+id/reminded_count_textview"
-            android:layout_toEndOf="@+id/task_done_count_textview"
-            android:layout_toRightOf="@+id/task_done_count_textview"
+            android:layout_toStartOf="@+id/friend_reminded_count_textview"
+            android:layout_toLeftOf="@+id/friend_reminded_count_textview"
+            android:layout_toEndOf="@+id/friend_task_done_count_textview"
+            android:layout_toRightOf="@+id/friend_task_done_count_textview"
             android:text="TextView" />
 
         <TextView
-            android:id="@+id/task_done_count_textview"
+            android:id="@+id/friend_task_done_count_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -137,10 +137,10 @@
             android:text="TextView" />
 
         <TextView
-            android:id="@+id/reminded_textview"
+            android:id="@+id/friend_reminded_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/reminded_count_textview"
+            android:layout_above="@+id/friend_reminded_count_textview"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_marginEnd="41dp"
@@ -149,26 +149,26 @@
             android:text="Reminded" />
 
         <TextView
-            android:id="@+id/challang_complete_textview"
+            android:id="@+id/friend_challang_complete_textview"
             android:layout_width="69dp"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/challange_complete_count_textview"
+            android:layout_above="@+id/friend_challange_complete_count_textview"
             android:layout_marginStart="53dp"
             android:layout_marginLeft="53dp"
             android:layout_marginEnd="66dp"
             android:layout_marginRight="66dp"
             android:layout_marginBottom="13dp"
-            android:layout_toStartOf="@+id/reminded_textview"
-            android:layout_toLeftOf="@+id/reminded_textview"
-            android:layout_toEndOf="@+id/task_done_textview"
-            android:layout_toRightOf="@+id/task_done_textview"
+            android:layout_toStartOf="@+id/friend_reminded_textview"
+            android:layout_toLeftOf="@+id/friend_reminded_textview"
+            android:layout_toEndOf="@+id/friend_task_done_textview"
+            android:layout_toRightOf="@+id/friend_task_done_textview"
             android:text=" Challange Complete" />
 
         <TextView
-            android:id="@+id/task_done_textview"
+            android:id="@+id/friend_task_done_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/task_done_count_textview"
+            android:layout_above="@+id/friend_task_done_count_textview"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_marginStart="57dp"
