@@ -112,20 +112,21 @@
             android:textColor="@android:color/black"
             android:textSize="18sp" />
 
-        <Button
-            android:id="@+id/Date_Button"
+        <EditText
+            android:id="@+id/Date_edittext"
             android:layout_width="130dp"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="170dp"
             android:text="DATE"
+            android:focusable="false"
             android:textColor="@android:color/black"
             android:textSize="14sp" />
 
-        <Button
-            android:id="@+id/Time_Button"
+        <EditText
+            android:id="@+id/Time_edittext"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -133,6 +134,7 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="23dp"
             android:text="TIME"
+            android:focusable="false"
             android:textColor="@android:color/black"
             android:textSize="14sp" />
     </RelativeLayout>
