@@ -22,8 +22,8 @@ import java.util.Calendar;
 
 public class add_task extends AppCompatActivity implements View.OnClickListener {
 
-    private Button date_button;
-    private Button time_button;
+    private EditText date_edittext;
+    private EditText time_edittext;
     private DatePickerDialog datePickerDialog;
     private TimePickerDialog timePickerDialog;
     private EditText Limit_edittext,task_edittext;
@@ -40,14 +40,14 @@ public class add_task extends AppCompatActivity implements View.OnClickListener 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_task);
         task_edittext = findViewById(R.id.editText_task);
-        date_button = findViewById(R.id.Date_Button);
-        time_button = findViewById(R.id.Time_Button);
+        date_edittext = findViewById(R.id.Date_edittext);
+        time_edittext = findViewById(R.id.Time_edittext);
         reminder = findViewById(R.id.addTask_content_switch);
         type = findViewById(R.id.type_spinner);
         Limit_edittext = findViewById(R.id.editText_Limit);
 
-        time_button.setOnClickListener(this);
-        date_button.setOnClickListener(this);
+        time_edittext.setOnClickListener(this);
+        date_edittext.setOnClickListener(this);
         calendar = Calendar.getInstance();
 
         reminder.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -98,10 +98,10 @@ public class add_task extends AppCompatActivity implements View.OnClickListener 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.Date_Button:
+            case R.id.Date_edittext:
                 showDialog();
                 break;
-            case R.id.Time_Button:
+            case R.id.Time_edittext:
                 showTime();
                 break;
         }
@@ -115,14 +115,14 @@ public class add_task extends AppCompatActivity implements View.OnClickListener 
                 String date = String.valueOf(year) + "/" + String.valueOf(monthOfYear + 1) + "/" + Integer.toString(dayOfMonth);
                 mDate = date;
                 //String date = String.valueOf(monthOfYear + 1) + "/" + Integer.toString(dayOfMonth);
-                date_button.setText(date);
+                date_edittext.setText(date);
             }
         },
                 calendar.get(Calendar.YEAR),
                 calendar.get(Calendar.MONTH),
                 calendar.get(Calendar.DAY_OF_MONTH));
-        datePickerDialog.show();
-        datePickerDialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+                datePickerDialog.show();
+                datePickerDialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
     }
 
     private void showTime() {
@@ -133,7 +133,7 @@ public class add_task extends AppCompatActivity implements View.OnClickListener 
                 Log.d("test", Integer.toString(minute));
                 String time = Integer.toString(hourOfDay)+":"+Integer.toString(minute);
                 mTime = time;
-                time_button.setText(time);
+                time_edittext.setText(time);
             }
         }, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), true);
         timePickerDialog.show();
