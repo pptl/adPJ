@@ -1,7 +1,6 @@
 package com.example.Room1;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,7 +22,7 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.Even
     @NotNull
     @Override
     public EventViewHolder onCreateViewHolder(@NotNull ViewGroup parent, int viewType) {
-        View itemView = mInflater.inflate(R.layout.list_item,parent,false);
+        View itemView = mInflater.inflate(R.layout.calendar_list_item,parent,false);
         return new EventViewHolder(itemView);
     }
 
