@@ -22,13 +22,11 @@ class friendAdapter extends RecyclerView.Adapter<friendAdapter.ViewHolder>  {
         this.mContext = context;
     }
 
-
-
     @Override
     public friendAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         return new ViewHolder(LayoutInflater.from(mContext).
-                inflate(R.layout.list_item, parent, false));
+                inflate(R.layout.friend_list_item, parent, false));
     }
 
     @Override
@@ -52,12 +50,10 @@ class friendAdapter extends RecyclerView.Adapter<friendAdapter.ViewHolder>  {
         // Member Variables for the TextViews
         private TextView mFriendNameText;
 
-
         ViewHolder(View itemView) {
             super(itemView);
             // Initialize the views.
             mFriendNameText = itemView.findViewById(R.id.friend_name_block);
-
         }
 
         void bindTo(friend currentFriend){

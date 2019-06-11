@@ -17,17 +17,16 @@ public class friend_list extends Fragment {
     private RecyclerView mRecyclerView;
     private ArrayList<friend> mFriendData;
     private friendAdapter mAdapter;
-    private View view;
 
     @Nullable
     @Override
     public View onCreateView(@NotNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
 
-        view = inflater.inflate(R.layout.fragment_friend_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_friend_list, container, false);
 
         mRecyclerView = view.findViewById(R.id.friend_list_recycleview);
        // setContentView(R.layout.fragment_friend_list);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
 
         // Initialize the ArrayList that will contain the data.
