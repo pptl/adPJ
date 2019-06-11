@@ -23,6 +23,7 @@
     <string name="add_task_textView_Limit">Limited</string>
     <string name="add_task_textView_Type">Type</string>
     <string name="add_task_textView_Remind">Remind</string>
+    <string name="profile_default_number">00/00</string>
 
     <string-array name="frindNameList">
         <item>Mr Meow</item>
