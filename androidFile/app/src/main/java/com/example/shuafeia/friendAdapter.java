@@ -43,8 +43,6 @@ class friendAdapter extends RecyclerView.Adapter<friendAdapter.ViewHolder>  {
         return mfriendData.size();
     }
 
-
-
     class ViewHolder extends RecyclerView.ViewHolder {
 
         // Member Variables for the TextViews
