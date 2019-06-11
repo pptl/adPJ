@@ -103,26 +103,28 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginEnd="41dp"
-            android:layout_marginRight="41dp"
-            android:layout_marginBottom="28dp"
-            android:text="TextView" />
+            android:layout_centerInParent="true"
+            android:layout_marginEnd="65dp"
+            android:layout_marginRight="65dp"
+            android:layout_marginBottom="27dp"
+            android:text="@string/profile_default_number" />
 
         <TextView
             android:id="@+id/friend_challange_complete_count_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="65dp"
-            android:layout_marginLeft="65dp"
-            android:layout_marginEnd="69dp"
-            android:layout_marginRight="69dp"
-            android:layout_marginBottom="25dp"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="100dp"
+            android:layout_marginLeft="100dp"
+            android:layout_marginEnd="58dp"
+            android:layout_marginRight="58dp"
+            android:layout_marginBottom="27dp"
             android:layout_toStartOf="@+id/friend_reminded_count_textview"
             android:layout_toLeftOf="@+id/friend_reminded_count_textview"
             android:layout_toEndOf="@+id/friend_task_done_count_textview"
             android:layout_toRightOf="@+id/friend_task_done_count_textview"
-            android:text="TextView" />
+            android:text="@string/profile_default_number" />
 
         <TextView
             android:id="@+id/friend_task_done_count_textview"
@@ -131,10 +133,11 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="55dp"
-            android:layout_marginLeft="55dp"
-            android:layout_marginBottom="23dp"
-            android:text="TextView" />
+            android:layout_centerInParent="true"
+            android:layout_marginStart="75dp"
+            android:layout_marginLeft="75dp"
+            android:layout_marginBottom="27dp"
+            android:text="@string/profile_default_number" />
 
         <TextView
             android:id="@+id/friend_reminded_textview"
