@@ -37,11 +37,13 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.Even
         if(mEvent!=null){
             Event current = mEvent.get(position);
             holder.list_time.setText(current.getTime());
-            holder.list_title.setText(current.getTask());
+            holder.list_task.setText(current.getTask());
+            holder.list_type.setText(current.getType());
         }
         else{
             holder.list_time.setText("0");
-            holder.list_title.setText("0");
+            holder.list_task.setText("0");
+            holder.list_type.setText("0");
         }
     }
 
@@ -54,12 +56,14 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.Even
 
     class EventViewHolder extends RecyclerView.ViewHolder {
         private final TextView list_time;
-        private final TextView list_title;
+        private final TextView list_task;
+        private final TextView list_type;
 
         private EventViewHolder(View itemView) {
             super(itemView);
-            list_title = itemView.findViewById(R.id.List_event);
-            list_time = itemView.findViewById(R.id.List_time);
+            list_task = itemView.findViewById(R.id.List_Task);
+            list_time = itemView.findViewById(R.id.List_Time);
+            list_type = itemView.findViewById(R.id.List_Type);
         }
     }
 }
