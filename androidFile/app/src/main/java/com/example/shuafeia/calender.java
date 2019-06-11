@@ -81,7 +81,7 @@ public class calender extends Fragment {
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                Date = year + "/" + (month + 1) + "/" + dayOfMonth;
+                Date = String.format("%d/%02d/%02d",year,month+1,dayOfMonth);
 
                 Log.d(LOG_TAG, "User click Date:"+Date);
                 mEventViewModel.findEventByDate(Date).observe(calender.this, new Observer<List<Event>>() {

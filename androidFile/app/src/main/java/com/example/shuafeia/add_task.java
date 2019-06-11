@@ -115,7 +115,7 @@ public class add_task extends AppCompatActivity implements View.OnClickListener 
                 this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                String date = String.valueOf(year) + "/" + String.valueOf(monthOfYear + 1) + "/" + Integer.toString(dayOfMonth);
+                String date = String.format("%d/%02d/%02d",year,monthOfYear+1,dayOfMonth);
                 mDate = date;
                 //String date = String.valueOf(monthOfYear + 1) + "/" + Integer.toString(dayOfMonth);
                 date_edittext.setText(date);
@@ -134,7 +134,7 @@ public class add_task extends AppCompatActivity implements View.OnClickListener 
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                 Log.d("test", Integer.toString(hourOfDay));
                 Log.d("test", Integer.toString(minute));
-                String time = Integer.toString(hourOfDay)+":"+Integer.toString(minute);
+                String time = String.format("%02d:%02d",hourOfDay,minute);
                 mTime = time;
                 time_edittext.setText(time);
             }
