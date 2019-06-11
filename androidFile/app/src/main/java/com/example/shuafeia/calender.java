@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -13,7 +15,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CalendarView;
-import android.widget.TextView;
 
 import com.example.Room1.Event;
 import com.example.Room1.EventListAdapter;
@@ -31,7 +32,6 @@ public class calender extends Fragment {
     private RecyclerView recyclerView;
     private EventViewModel mEventViewModel;
     private CalendarView calendarView;
-    private int total_size = 0;
     private String Date;
 
     @Nullable
@@ -46,6 +46,9 @@ public class calender extends Fragment {
 
         final EventListAdapter adapter = new EventListAdapter(this.getContext());
         recyclerView = (RecyclerView) RootView.findViewById(R.id.calendar_RecyclerView);
+        DividerItemDecoration divider = new DividerItemDecoration(getActivity(),DividerItemDecoration.VERTICAL);
+        divider.setDrawable(ContextCompat.getDrawable(getActivity(),R.drawable.custom_divider));
+        recyclerView.addItemDecoration(divider);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         mEventViewModel = ViewModelProviders.of(this).get(EventViewModel.class);
@@ -64,10 +67,10 @@ public class calender extends Fragment {
                                 + " " + events.get(i).getTime()
                                 + " " + events.get(i).isRemind()
                                 + " " + events.get(i).getType()
-                                + " " + events.get(i).getLimit());
+                                + " " + events.get(i).getLimit_hour()
+                                + ":" + events.get(i).getLimit_minue());
                     }
                 }
-                total_size = i;
                 Log.d(LOG_TAG,"Size:"+i);
                 adapter.setEvent(temp);
             }
@@ -85,15 +88,19 @@ public class calender extends Fragment {
                     @Override
                     public void onChanged(@Nullable final List<Event> events) {
                         // Update the cached copy of the words in the adapter.
-                        /*for (int i = 0; i < events.size(); i++) {
+                        for (int i = 0; i < events.size(); i++) {
                             Log.d(LOG_TAG, "i:" + i);
-                            Log.d(LOG_TAG, events.get(i).getTask()
-                                                    + " " + events.get(i).getDate()
-                                                    + " " + events.get(i).getTime()
-                                                    + " " + events.get(i).isRemind()
-                                                    + " " + events.get(i).getType()
-                                                    + " " + events.get(i).getLimit());
-                        }*/
+                            Log.d(LOG_TAG, "Datetime: " +events.get(i).getDateTime()
+                                    + "Task name:" + events.get(i).getTask()
+                                    + " Date:" + events.get(i).getDate()
+                                    + " Time:" + events.get(i).getTime()
+                                    + " Remind:" + events.get(i).isRemind()
+                                    + " Type:" + events.get(i).getType()
+                                    + " Limit Time" + events.get(i).getLimit_hour()
+                                    + ":" + events.get(i).getLimit_minue()
+                                    + " Finish:" + events.get(i).isFinish()
+                                    + " Reminded_friend:" + events.get(i).isRemind_friend());
+                        }
                         adapter.setEvent(events);
                         recyclerView.setAdapter(adapter);
                     }

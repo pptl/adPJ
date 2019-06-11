@@ -10,13 +10,13 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -26,13 +26,14 @@ public class add_task extends AppCompatActivity implements View.OnClickListener 
     private EditText time_edittext;
     private DatePickerDialog datePickerDialog;
     private TimePickerDialog timePickerDialog;
-    private EditText Limit_edittext,task_edittext;
+    private EditText Limit_edittext_hour,Limit_edittext_minue,task_edittext;
     private Calendar calendar;
     private Switch reminder;
     private Spinner type;
 
     private final String LOG_TAG = add_task.class.getSimpleName();
-    private String mDate,mTime,mType,mTask,mLimit;
+    private String mDate,mTime,mType,mTask;
+    private int mLimit_hour,mLimit_minue;
     private boolean mReminder;
 
     @Override
@@ -44,7 +45,8 @@ public class add_task extends AppCompatActivity implements View.OnClickListener 
         time_edittext = findViewById(R.id.Time_edittext);
         reminder = findViewById(R.id.addTask_content_switch);
         type = findViewById(R.id.type_spinner);
-        Limit_edittext = findViewById(R.id.editText_Limit);
+        Limit_edittext_hour = findViewById(R.id.editText_Limit_hour);
+        Limit_edittext_minue = findViewById(R.id.editText_Limit_minue);
 
         time_edittext.setOnClickListener(this);
         date_edittext.setOnClickListener(this);
@@ -62,18 +64,18 @@ public class add_task extends AppCompatActivity implements View.OnClickListener 
             }
         });
 
-        
+
         ArrayAdapter<CharSequence> nAdapter = ArrayAdapter.createFromResource(
                 this, R.array.addTask_type_array, android.R.layout.simple_spinner_item );
         nAdapter.setDropDownViewResource(
                 android.R.layout.simple_spinner_dropdown_item);
-        
+
         if (type != null) {
             type.setAdapter(nAdapter);
         }
-        
+
         type.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            
+
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if(position == 0){
@@ -82,7 +84,8 @@ public class add_task extends AppCompatActivity implements View.OnClickListener 
                     setTitle( "VISIBLE" );
                 } else {
                     findViewById(R.id.limited).setVisibility( View.INVISIBLE );
-                    Limit_edittext.setText("");
+                    Limit_edittext_hour.setText("");
+                    Limit_edittext_minue.setText("");
                     setTitle( "INVISIBLE" );
                     mType = "Task";
                 }
@@ -121,8 +124,8 @@ public class add_task extends AppCompatActivity implements View.OnClickListener 
                 calendar.get(Calendar.YEAR),
                 calendar.get(Calendar.MONTH),
                 calendar.get(Calendar.DAY_OF_MONTH));
-                datePickerDialog.show();
-                datePickerDialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+        datePickerDialog.show();
+        datePickerDialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
     }
 
     private void showTime() {
@@ -151,16 +154,67 @@ public class add_task extends AppCompatActivity implements View.OnClickListener 
     }
 
     public void PostEvent(View view) {
+        boolean isOK = true;
         Intent intent = new Intent();
-        mTask = task_edittext.getText().toString();
-        mLimit = Limit_edittext.getText().toString();
-        intent.putExtra("Task",mTask);
-        intent.putExtra("Date",mDate);
-        intent.putExtra("Time",mTime);
-        intent.putExtra("Remind",mReminder);
-        intent.putExtra("Type",mType);
-        intent.putExtra("Limit",mLimit);
-        setResult(RESULT_OK,intent);
-        finish();
+        if (!task_edittext.getText().toString().equals("")){
+            mTask = task_edittext.getText().toString();
+        }else{
+            task_edittext.setError("Input Task");
+            task_edittext.requestFocus();
+            isOK = false;
+        }
+
+        if(mType.equals("Challenge")){
+            if (!Limit_edittext_hour.getText().toString().equals("")){
+                mLimit_hour = Integer.parseInt(Limit_edittext_hour.getText().toString());
+            }else{
+                Limit_edittext_hour.setError("Input hour");
+                Limit_edittext_hour.requestFocus();
+                isOK = false;
+            }
+
+            if (!Limit_edittext_minue.getText().toString().equals("")){
+                mLimit_minue = Integer.parseInt(Limit_edittext_minue.getText().toString());
+            }else{
+                Limit_edittext_minue.setError("Input hour");
+                Limit_edittext_minue.requestFocus();
+                isOK = false;
+            }
+        } else{
+            mLimit_hour = 0;
+            mLimit_minue = 0;
+        }
+
+        if (!date_edittext.getText().toString().equals("Date")){
+            mDate = date_edittext.getText().toString();
+        }else{
+            date_edittext.setError("Input Date");
+            date_edittext.requestFocus();
+            isOK = false;
+        }
+
+        if (!time_edittext.getText().toString().equals("Time")){
+            mTime = time_edittext.getText().toString();
+        }else{
+            time_edittext.setError("Input Time");
+            time_edittext.requestFocus();
+            isOK = false;
+        }
+
+        if(isOK){
+            intent.putExtra("Task",mTask);
+            intent.putExtra("Date",mDate);
+            intent.putExtra("Limit_hour",mLimit_hour);
+            intent.putExtra("Limit_minue",mLimit_minue);
+            intent.putExtra("Time",mTime);
+            intent.putExtra("Remind",mReminder);
+            intent.putExtra("Type",mType);
+            setResult(RESULT_OK,intent);
+            finish();
+        }else{
+            Toast toast = Toast.makeText(this,"Input all",Toast.LENGTH_SHORT);
+            toast.show();
+        }
+
     }
 }

@@ -25,7 +25,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="@string/title_addtask"
-                android:textSize="17dp" />
+                android:textSize="17sp" />
 
             <TextView
                 android:id="@+id/toolbar_post"
@@ -79,7 +79,8 @@
             android:layout_marginLeft="23dp"
             android:text="Task"
             android:textColor="@android:color/black"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:layout_marginStart="23dp" />
 
         <EditText
             android:id="@+id/editText_task"
@@ -91,7 +92,8 @@
             android:layout_marginRight="23dp"
             android:ems="13"
             android:hint="@string/addTask_editTextTask_hint"
-            android:inputType="textLongMessage" />
+            android:inputType="textLongMessage"
+            android:layout_marginEnd="23dp" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -110,7 +112,8 @@
             android:layout_marginLeft="23dp"
             android:text="Time"
             android:textColor="@android:color/black"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:layout_marginStart="23dp" />
 
         <EditText
             android:id="@+id/Date_edittext"
@@ -123,12 +126,13 @@
             android:text="DATE"
             android:focusable="false"
             android:textColor="@android:color/black"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:layout_marginEnd="170dp" />
 
         <EditText
             android:id="@+id/Time_edittext"
             android:layout_width="130dp"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
@@ -136,7 +140,8 @@
             android:text="TIME"
             android:focusable="false"
             android:textColor="@android:color/black"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:layout_marginEnd="23dp" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -154,9 +159,10 @@
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="23dp"
-            android:text="Remind"
+            android:text="@string/add_task_textView_Remind"
             android:textColor="@android:color/black"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:layout_marginStart="23dp" />
 
         <Switch
             android:id="@+id/addTask_content_switch"
@@ -165,7 +171,8 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="255dp"/>
+            android:layout_marginRight="255dp"
+            android:layout_marginEnd="255dp" />
 
     </RelativeLayout>
 
@@ -184,9 +191,10 @@
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="23dp"
-            android:text="Type"
+            android:text="@string/add_task_textView_Type"
             android:textColor="@android:color/black"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:layout_marginStart="23dp" />
 
         <Spinner
             android:id="@+id/type_spinner"
@@ -196,7 +204,9 @@
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="115dp"
-            android:layout_marginRight="130dp" />
+            android:layout_marginRight="130dp"
+            android:layout_marginStart="115dp"
+            android:layout_marginEnd="130dp" />
 
     </RelativeLayout>
 
@@ -206,7 +216,6 @@
         android:layout_weight="1"
         android:id="@+id/limited">
 
-
         <TextView
             android:id="@+id/addTask_content_limited"
             android:layout_width="wrap_content"
@@ -215,22 +224,63 @@
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="23dp"
-            android:text="Limited"
+            android:text="@string/add_task_textView_Limit"
             android:textColor="@android:color/black"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:layout_marginStart="23dp" />
 
         <EditText
-            android:id="@+id/editText_Limit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
+            android:id="@+id/editText_Limit_hour"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="23dp"
+            android:layout_toRightOf="@id/addTask_content_limited"
             android:layout_centerVertical="true"
-            android:layout_marginRight="23dp"
             android:ems="13"
             android:hint="@string/addTask_editTextLimited_hint"
-            android:inputType="phone|number"
-            android:digits="1234567890" />
+            android:inputType="number"
+            android:layout_toEndOf="@id/addTask_content_limited"
+            android:layout_marginStart="23dp" />
+
+        <TextView
+            android:id="@+id/addTask_content_limited_hour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/editText_Limit_hour"
+            android:layout_marginLeft="5dp"
+            android:text="@string/add_task_textView_Limit_hour"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:layout_toEndOf="@id/editText_Limit_hour"
+            android:layout_marginStart="5dp" />
+
+        <EditText
+            android:id="@+id/editText_Limit_minue"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/addTask_content_limited_hour"
+            android:ems="13"
+            android:hint="@string/addTask_editTextLimited_hint"
+            android:inputType="number"
+            android:layout_toEndOf="@id/addTask_content_limited_hour"
+            android:layout_marginStart="5dp" />
+
+        <TextView
+            android:id="@+id/addTask_content_limited_minue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/editText_Limit_minue"
+            android:layout_marginLeft="5dp"
+            android:text="@string/add_task_textView_Limit_minue"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:layout_toEndOf="@id/editText_Limit_minue"
+            android:layout_marginStart="5dp" />
+
     </RelativeLayout>
 
     <RelativeLayout
@@ -250,7 +300,8 @@
             android:visibility="invisible"
             android:text="Location"
             android:textColor="@android:color/black"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:layout_marginStart="23dp" />
 
         <Button
             android:id="@+id/addTask_button_location"
@@ -260,10 +311,10 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:visibility="invisible"
-
             android:layout_marginRight="170dp"
             android:text="定位"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/black"
+            android:layout_marginEnd="170dp" />
 
     </RelativeLayout>
 

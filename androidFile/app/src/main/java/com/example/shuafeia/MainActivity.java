@@ -1,4 +1,5 @@
 package com.example.shuafeia;
+
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
@@ -84,12 +85,14 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         if(requestCode == RESULE_CODE) {
             if (resultCode == RESULT_OK) {
                 Event event = new Event(data.getStringExtra("Task"),
-                                        data.getStringExtra("Date"),
-                                        data.getStringExtra("Time"),
-                                        data.getBooleanExtra("Remind", false),
-                                        data.getStringExtra("Type"),
-                                        data.getStringExtra("Limit"));
+                        data.getStringExtra("Date"),
+                        data.getStringExtra("Time"),
+                        data.getBooleanExtra("Remind", false),
+                        data.getStringExtra("Type"),
+                        data.getIntExtra("Limit_hour",0),
+                        data.getIntExtra("Limit_minue",0));
                 //db.eventDao().insert(event);
+                Log.d(LOG_TAG,"DateTime:"+event.getDateTime()+" Task Name:"+event.getTask()+" Date:"+event.getDate()+" Time:"+event.getTime()+" Remind:"+event.isRemind()+" Type:"+event.getType()+" Limit:"+event.getLimit_hour()+":"+event.getLimit_minue());
                 mEventViewModel.insert(event);
                 Log.d(LOG_TAG,"Insert sussceful");
             }
