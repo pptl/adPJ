@@ -9,7 +9,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 
-@Database(entities = {Event.class}, version = 3, exportSchema = false)
+@Database(entities = {Event.class}, version = 1, exportSchema = false)
 public abstract class EventRoomDatabase extends RoomDatabase {
 
     public abstract EventDao eventDao();
