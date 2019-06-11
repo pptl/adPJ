@@ -63,8 +63,6 @@ class friendAdapter extends RecyclerView.Adapter<friendAdapter.ViewHolder>  {
         void bindTo(friend currentFriend){
             // Populate the textviews with data.
             mFriendNameText.setText(currentFriend.getName());
-
-
         }
     }
 }

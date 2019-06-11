@@ -15,11 +15,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CalendarView;
-
 import com.example.Room1.Event;
 import com.example.Room1.EventListAdapter;
 import com.example.Room1.EventViewModel;
-
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
