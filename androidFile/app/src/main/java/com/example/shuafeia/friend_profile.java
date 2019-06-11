@@ -2,6 +2,7 @@ package com.example.shuafeia;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 public class friend_profile extends AppCompatActivity {
 
@@ -9,5 +10,9 @@ public class friend_profile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friend_profile);
+    }
+
+    public void goBack(View view) {
+        finish();
     }
 }

@@ -27,6 +27,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Intent intent = new Intent(MainActivity.this,login_page.class);
+        startActivity(intent);
+
         //loading the default fragment
         loadFragment(new calender());
         mEventViewModel = ViewModelProviders.of(this).get(EventViewModel.class);

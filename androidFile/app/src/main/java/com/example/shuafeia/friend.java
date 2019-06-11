@@ -7,16 +7,15 @@ class friend {
 
     // Member variables representing the title and information about the sport.
     private String name;
+    private final int imageResource;
 
-
-
-    friend(String name) {
+    friend(String name,int imageResource) {
         this.name = name;
-
+        this.imageResource = imageResource;
     }
+    public int getImageResource() {return imageResource;}
 
-
-    String getName() {
+    public String getName() {
         return name;
     }
 

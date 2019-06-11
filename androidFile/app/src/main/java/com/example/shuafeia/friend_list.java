@@ -1,12 +1,15 @@
 package com.example.shuafeia;
+import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -41,11 +44,16 @@ public class friend_list extends Fragment {
 
         // Get the data.
         initializeData();
+
+
+
         return view;
     }
     private void initializeData() {
         // Get the resources from the XML file.
         String[] friendList = getResources().getStringArray(R.array.frindNameList);
+
+        TypedArray catsImageResources =getResources().obtainTypedArray(R.array.cat_images);
 
         // Clear the existing data (to avoid duplication).
         mFriendData.clear();
@@ -53,8 +61,10 @@ public class friend_list extends Fragment {
         // Create the ArrayList of Sports objects with titles and
         // information about each sport.
         for(int i=0;i<friendList.length;i++){
-            mFriendData.add(new friend(friendList[i]));
+            mFriendData.add(new friend(friendList[i],catsImageResources.getResourceId(i,0)));
         }
+
+        catsImageResources.recycle();
 
         // Notify the adapter of the change.
         mAdapter.notifyDataSetChanged();

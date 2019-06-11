@@ -2,16 +2,20 @@ package com.example.shuafeia;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
 
-class friendAdapter extends RecyclerView.Adapter<friendAdapter.ViewHolder>  {
+class friendAdapter extends RecyclerView.Adapter<friendAdapter.ViewHolder> {
 
     // Member variables.
     private ArrayList<friend> mfriendData;
@@ -43,20 +47,34 @@ class friendAdapter extends RecyclerView.Adapter<friendAdapter.ViewHolder>  {
         return mfriendData.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         // Member Variables for the TextViews
         private TextView mFriendNameText;
+        private ImageView mUserIcon;
 
-        ViewHolder(View itemView) {
+        ViewHolder(final View itemView) {
             super(itemView);
             // Initialize the views.
             mFriendNameText = itemView.findViewById(R.id.friend_name_block);
+            mUserIcon = itemView.findViewById(R.id.user_icon);
+            itemView.setOnClickListener(this);
         }
 
-        void bindTo(friend currentFriend){
+        void bindTo(final friend currentFriend){
             // Populate the textviews with data.
             mFriendNameText.setText(currentFriend.getName());
+            Glide.with(mContext).load(currentFriend.getImageResource()).into(mUserIcon);
+
+        }
+
+        @Override
+        public void onClick(View v) {
+            friend currentCat = mfriendData.get(getAdapterPosition());
+            Intent intent = new Intent(mContext,friend_profile.class);
+            intent.putExtra("name",currentCat.getName());
+            intent.putExtra("icon",currentCat.getImageResource());
+            mContext.startActivity(intent);
         }
     }
 }

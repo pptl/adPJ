@@ -24,6 +24,7 @@
     <string name="add_task_textView_Type">Type</string>
     <string name="add_task_textView_Remind">Remind</string>
     <string name="profile_default_number">00/00</string>
+    <string name="friend_profile_toolbar">Friend\'s TimeLine</string>
 
     <string-array name="frindNameList">
         <item>Mr Meow</item>
@@ -31,4 +32,11 @@
         <item>Mr Anyson</item>
         <item>Mr Mutang</item>
     </string-array>
+
+    <array name="cat_images">
+        <item>@drawable/cat11</item>
+        <item>@drawable/cat22</item>
+        <item>@drawable/cat33</item>
+        <item>@drawable/cat44</item>
+    </array>
 </resources>
