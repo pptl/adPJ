@@ -3,11 +3,13 @@ package com.example.shuafeia;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -52,6 +54,7 @@ class friendAdapter extends RecyclerView.Adapter<friendAdapter.ViewHolder> {
         // Member Variables for the TextViews
         private TextView mFriendNameText;
         private ImageView mUserIcon;
+        private LinearLayout friend_list_item_linearLayout;
 
         ViewHolder(final View itemView) {
             super(itemView);
@@ -64,6 +67,11 @@ class friendAdapter extends RecyclerView.Adapter<friendAdapter.ViewHolder> {
         void bindTo(final friend currentFriend){
             // Populate the textviews with data.
             mFriendNameText.setText(currentFriend.getName());
+            friend_list_item_linearLayout = itemView.findViewById(R.id.friend_list_item_linearLayout);
+            if(currentFriend.getNum()%2==0)
+            {
+                friend_list_item_linearLayout.setBackgroundColor(Color.parseColor("#FFF4EA"));
+            }
             Glide.with(mContext).load(currentFriend.getImageResource()).into(mUserIcon);
 
         }

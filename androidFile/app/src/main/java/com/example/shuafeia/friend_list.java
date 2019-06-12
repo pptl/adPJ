@@ -61,7 +61,7 @@ public class friend_list extends Fragment {
         // Create the ArrayList of Sports objects with titles and
         // information about each sport.
         for(int i=0;i<friendList.length;i++){
-            mFriendData.add(new friend(friendList[i],catsImageResources.getResourceId(i,0)));
+            mFriendData.add(new friend(friendList[i],catsImageResources.getResourceId(i,0),i));
         }
 
         catsImageResources.recycle();
