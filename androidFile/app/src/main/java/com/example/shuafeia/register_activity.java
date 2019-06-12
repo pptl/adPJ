@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -24,10 +25,15 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+
+import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -44,6 +50,7 @@ public class register_activity extends AppCompatActivity implements View.OnClick
     FirebaseAuth auth;
     com.google.firebase.storage.StorageReference StorageReference;
     DatabaseReference database;
+    private FirebaseFirestore mFirestore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,53 +58,58 @@ public class register_activity extends AppCompatActivity implements View.OnClick
         setContentView(R.layout.activity_register_activity);
 
         auth = FirebaseAuth.getInstance();
-
         database = FirebaseDatabase.getInstance().getReference().child("Users");
         StorageReference = FirebaseStorage.getInstance().getReference().child("images");
+        mFirestore = FirebaseFirestore.getInstance();
 
         uri = null;
-        progressBar = (ProgressBar) findViewById(R.id.register_progressBar);
-        email = (EditText) findViewById(R.id.register_email_editText);
-        name = (EditText) findViewById(R.id.register_name_editText);
-        password = (EditText) findViewById(R.id.register_password_editText);
-        submit = (Button) findViewById(R.id.register_create_account_button);
-        login = (Button) findViewById(R.id.register_close_button);
-        image = (ImageView) findViewById(R.id.new_account_imageView);
+        progressBar =  findViewById(R.id.register_progressBar);
+        email =  findViewById(R.id.register_email_editText);
+        name = findViewById(R.id.register_name_editText);
+        password =  findViewById(R.id.register_password_editText);
+        submit =  findViewById(R.id.register_create_account_button);
+        login =  findViewById(R.id.register_close_button);
+        image =  findViewById(R.id.new_account_imageView);
 
         submit.setOnClickListener(this);
         login.setOnClickListener(this);
+        image.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.register_create_account_button:
-                Toast.makeText(register_activity.this, "Registration Completed", Toast.LENGTH_SHORT).show();
-                finish();
-                //Register();
+
+                  Register();
                 break;
             case R.id.register_close_button:
                 finish();
                 break;
+            case R.id.new_account_imageView:
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                Log.d("walao","clicked");
+                startActivityForResult(Intent.createChooser(intent, "Selected Picture"), pick_image);
+                break;
         }
     }
-/*
+
     private void Register() {
+
 
         final String user_name = name.getText().toString();
         String EmailTxt = email.getText().toString();
         String PassTxt = password.getText().toString();
 
         if (uri != null) {
-
             progressBar.setVisibility(View.VISIBLE);
-
             if (!TextUtils.isEmpty(user_name) && !TextUtils.isEmpty(EmailTxt) && !TextUtils.isEmpty(PassTxt)) {
 
                 auth.createUserWithEmailAndPassword(EmailTxt, PassTxt).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull final Task<AuthResult> task) {
-                        Log.d("sabi", "lala");
                         if (task.isSuccessful()) {
                             final String user_id = auth.getCurrentUser().getUid();
                             StorageReference user_profile = StorageReference.child(user_id + ".jpg");
@@ -107,8 +119,11 @@ public class register_activity extends AppCompatActivity implements View.OnClick
                                 public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> uploadtask) {
 
                                     uploadtask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                        @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
                                         @Override
                                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+
                                             Task<Uri> downloadUrl = taskSnapshot.getStorage().getDownloadUrl();
                                             String image_uri = downloadUrl.toString();
                                             String token_id =  FirebaseInstanceId.getInstance().getToken();
@@ -127,18 +142,34 @@ public class register_activity extends AppCompatActivity implements View.OnClick
                                             progressBar.setVisibility(View.INVISIBLE);
                                         }
                                     });
+
+
                                 }
                             });
+
                         } else {
                             Toast.makeText(register_activity.this, "Registration Error", Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.INVISIBLE);
                         }
+
                     }
                 });
+
+
+
+
+
             }
+
         }
+
     }
 
+    public void goMenu() {
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -147,5 +178,5 @@ public class register_activity extends AppCompatActivity implements View.OnClick
             image.setImageURI(uri);
         }
     }
-*/
+
 }

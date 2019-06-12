@@ -14,6 +14,15 @@ import android.view.View;
 
 import com.example.Room1.Event;
 import com.example.Room1.EventViewModel;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 //implement the interface OnNavigationItemSelectedListener in your activity class
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
@@ -21,14 +30,15 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
     private EventViewModel mEventViewModel;
     static final int RESULE_CODE = 1;
+    FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        auth = FirebaseAuth.getInstance();
 
-        Intent intent = new Intent(MainActivity.this,login_page.class);
-        startActivity(intent);
+
 
         //loading the default fragment
         loadFragment(new calender());
@@ -39,7 +49,14 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         navigation.setOnNavigationItemSelectedListener(this);
     }
 
-
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if(auth.getCurrentUser()!= null){
+            startActivity(new Intent(this,login_page.class));
+            finish();
+        }
+    }
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         Fragment fragment = null;
