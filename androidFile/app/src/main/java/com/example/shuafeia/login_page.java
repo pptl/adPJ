@@ -81,6 +81,8 @@ public class login_page extends AppCompatActivity implements View.OnClickListene
                         String user_id = auth.getCurrentUser().getUid();
 
                         DatabaseReference user_data = databaseReference.child(user_id);
+                        startActivity(new Intent(login_page.this,MainActivity.class));
+                        /*
                         user_data.child("token_id").setValue(token_id).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
@@ -95,6 +97,7 @@ public class login_page extends AppCompatActivity implements View.OnClickListene
                                 Toast.makeText(login_page.this,"Failure",Toast.LENGTH_SHORT).show();
                             }
                         });
+                        */
 
                     }else{
                         Toast.makeText(login_page.this,"Login Error",Toast.LENGTH_SHORT).show();

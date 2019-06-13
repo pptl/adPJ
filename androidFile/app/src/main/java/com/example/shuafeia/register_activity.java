@@ -132,7 +132,7 @@ public class register_activity extends AppCompatActivity implements View.OnClick
                                             user_data.child("user_image").setValue(image_uri);
                                             user_data.child("token_id").setValue(token_id);;
                                             progressBar.setVisibility(View.INVISIBLE);
-                                            startActivity(new Intent(register_activity.this, MainActivity.class));
+                                            startActivity(new Intent(register_activity.this, login_page.class));
                                             finishAffinity();
                                         }
                                     }).addOnFailureListener(new OnFailureListener() {
