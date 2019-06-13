@@ -12,7 +12,7 @@ import android.widget.Button;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class setting extends Fragment{
-    private Button logout;
+    private Button logout,ring;
     FirebaseAuth auth;
     @Nullable
     @Override
@@ -22,6 +22,7 @@ public class setting extends Fragment{
 
         View view =inflater.inflate(R.layout.fragment_setting, container, false);
         logout = view.findViewById(R.id.Logout_Button);
+        ring = view.findViewById(R.id.Ringtone_Button);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -29,9 +30,23 @@ public class setting extends Fragment{
             }
         });
 
+        ring.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendMessage();
+            }
+        });
         return view;
     }
 
+    private void sendMessage() {
+        String user_id = "lll";
+        String user_name="com.google.android.gms.tasks.zzu@36c0642";
+        Intent intent = new Intent(this.getContext(),SendActivity.class);
+        intent.putExtra("user_id",user_id);
+        intent.putExtra("user_name",user_name);
+        startActivity(intent);
+    }
 
 
     private void Logout() {

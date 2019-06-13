@@ -3,8 +3,8 @@ apply plugin: 'com.google.gms.google-services'
 
 configurations {
     cleanedAnnotations
-    compile.exclude group: 'org.jetbrains' , module:'annotations'
-    compile.exclude group: 'com.intellij', module:'annotations'
+    compile.exclude group: 'org.jetbrains', module: 'annotations'
+    compile.exclude group: 'com.intellij', module: 'annotations'
 }
 
 android {
