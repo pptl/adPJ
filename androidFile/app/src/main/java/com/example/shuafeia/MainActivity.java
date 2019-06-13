@@ -52,10 +52,11 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     @Override
     protected void onStart() {
         super.onStart();
-        if(auth.getCurrentUser()!= null){
+        if(auth.getCurrentUser()== null){
             startActivity(new Intent(this,login_page.class));
             finish();
         }
+
     }
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
