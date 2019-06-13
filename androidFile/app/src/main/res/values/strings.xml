@@ -39,4 +39,6 @@
         <item>@drawable/cat33</item>
         <item>@drawable/cat44</item>
     </array>
+
+    <string name="default_notification_channel_id">01</string>
 </resources>

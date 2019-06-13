@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -78,6 +79,7 @@ public class login_page extends AppCompatActivity implements View.OnClickListene
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
                         String token_id = FirebaseInstanceId.getInstance().getToken();
+                        //Log.d("kaobe",token_id);
                         String user_id = auth.getCurrentUser().getUid();
 
                         DatabaseReference user_data = databaseReference.child(user_id);
