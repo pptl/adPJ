@@ -25,6 +25,7 @@ exports.sendNotifications = functions.database.ref('/Users/{user_id}/Notificatio
     const from_name  = result[0].val().name;
     const to_name = result[1].val().name;
     const token_id = result[1].val().token_id;
+      
 
     const payload ={
         notification :{

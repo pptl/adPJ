@@ -9,7 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SendActivity"></activity>
+        <activity android:name=".NotificationActivity">
+            <intent-filter>
+                <action android:name="com.google.firebase.NotificationTarget" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".SendActivity" />
         <activity android:name=".register_activity" />
         <activity android:name=".login_page" />
         <activity android:name=".add_task" />
