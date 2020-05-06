@@ -10,20 +10,34 @@
 ### 主頁：
 主頁會簡單顯示今天待處理的任務和簡單的月曆讓使用者可以一眼就清楚所有的任務
 
+![image](https://github.com/pptl/adPJ/blob/master/01.jpg)
+
 ### 新增任務：
 按下主頁右下的“+”鍵，就可以簡單地把想被提醒的事放上平台。如果使用者覺得不需要好友通知時，也可以手動關閉。
+
+![image](https://github.com/pptl/adPJ/blob/master/02.jpg)
 
 ### 任務列表：
 事件列表可以簡單地顯示出所有你所創建的事項紀錄
 
+![image](https://github.com/pptl/adPJ/blob/master/03.jpg)
+
 ### 好友列表：
 管理你的好友
+
+![image](https://github.com/pptl/adPJ/blob/master/04.jpg)
 
 ### 好友主頁：
 好友主頁可以簡單地統計出目前任務的進度與完成度和好友最近的一項任務
 
+![image](https://github.com/pptl/adPJ/blob/master/05.jpg)
+
 ### 個人主頁：
 可讓好友觀看到你的任務進度，藉此讓使用者更有上進心完成自己審定的任務
 
+![image](https://github.com/pptl/adPJ/blob/master/06.jpg)
+
 ### 提醒通知：
 好友沒有在限定時限內履行任務的話，系統就會發送信息提醒使用者的朋友提醒使用者。提醒管道目前為第三方的應用。
+
+![image](https://github.com/pptl/adPJ/blob/master/07.jpg)
